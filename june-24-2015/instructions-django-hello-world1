@@ -1,0 +1,164 @@
+
+*assumptions:
+    -you have a version of Linux based on Debian such as Ubuntu or Linux Mint
+    -you have access to the internet
+
+*high level instructions:
+    (0) install Django
+    (1) create root directory
+    (2) create a Django project 
+    (3) create a Django app for project
+    (4) create template folder and template for app
+    (5) create views for app
+    (6) set url mappings in project
+    (7) configure settings file
+    (8) start development server
+    (9) visit site in browser
+
+----------------------------------------------------------------
+*step (0): Install Django
+sudo pip install django==1.8
+
+*step (1): Create root directory called "mother1"
+
+    -navigate to home directory
+        cd
+
+    -create directory called mother1
+        #this will house the django project and its associated resources
+        mkdir mother1
+
+*step (2): Create a Django project called "yourproject"
+
+    -navigate into mother1
+        cd mother1    
+
+    -make a django project called yourproject
+        django-admin startproject yourproject
+
+
+*step (3): Create a Django app for project called "yourapp"
+
+    -navigate into yourproject
+        cd yourproject
+
+    -make a django app called yourapp
+        django-admin startapp yourapp
+    
+
+*step (4): Create template folder and template for app
+
+    -navigate to yourapp folder
+        cd yourapp
+
+    -make a template folder in yourapp
+        mkdir templates
+
+    -navigate into templates folder
+        cd templates
+
+    
+    -edit the contents of home.html
+        touch home.html
+        nano home.html
+
+    -make it have the following content
+    
+<html>
+    <h1>Hello World</h1>
+</html>
+
+    -exit nano
+        Ctrl-X
+        Y
+        enter
+    
+
+*step (5): Create views for app
+    #note a view in Django is more like a controller in other MVC frameworks.
+    #here this view has a single function called home which renders the home.html template
+
+    -navigate one level up back to yourapp folder
+        cd ..
+    
+    -edit the contents of views.py
+        nano views.py
+
+
+    -make it have the following:
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html', {})
+
+    -exit nano
+        Ctrl-X
+        Y
+        enter
+
+*step (6): Set url mappings in project
+
+    -navigate to directory with the urls.py file of yourproject
+        cd ../yourproject
+
+    -edit the contents of urls.py
+        nano urls.py
+
+    -make it have the following
+
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+import yourapp.views
+
+urlpatterns = [
+    url(r'^',    yourapp.views.home),
+]
+
+    -exit nano
+        Ctrl-X
+        Y
+        enter
+
+
+*step (7): Configure settings file
+    #this is so Django knows where to search for templates
+
+    -edit contents of settings.py
+        nano settings.py
+
+    -add template directory in settings.py
+        -add the following to the DIRS list in the template dictionary
+        "yourapp/templates"
+
+    -exit nano
+        Ctrl-X
+        Y
+        enter
+
+
+*step (8): Start development server
+    -navigate to the folder with manage.py
+        cd ..
+
+    -run developmental server
+        ./manage.py runserver
+
+
+*step (9): Visit site in browser
+    -in your browser, nagivate to: http://127.0.0.1:8000/
+        #you should see hello world
+
+
+
+
+----------------------------------
+*note you'll see the following:
+You have unapplied migrations; your app may not work properly until they are applied.
+Run 'python manage.py migrate' to apply them.
+
+Just ignore it, it's not important. That just means that if your app had database models, that it wouldn't work. But it doesn't because this is just a simple Hello World example
+
+
+
+

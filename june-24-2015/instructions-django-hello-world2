@@ -1,0 +1,101 @@
+
+*assumptions:
+    -you have a version of Linux based on Debian such as Ubuntu or Linux Mint
+    -you have access to the internet
+    -you have git version control system installed
+
+*high level instructions:
+
+    Part One
+    (0) create root directory
+    (1) initialize git in root directory
+    (2) edit git ignore
+    (3) install Python virtual environment 13.0.3
+    (4) install Django 1.8.2
+    (5) create requirements.txt file
+    (6) add and commit changes to root directory with git
+    (7) create a Python virtual environment in root directory
+    (8) activate Python virtual environment in root directory
+
+    Part Two
+    (0) create a Django project
+    *Do high level steps (3) through (8) from: instrutions-django-hello-world1
+
+----------------------------------------------------------------
+
+Part 1
+*step (0): Create root directory
+    mkdir mother2
+
+*step (1): Initialize git in root directory
+
+    -navigate into mother2
+        cd mother2  
+
+    -create git folder
+    git init
+
+*step (2) Edit git ignore
+    -make ignore file
+    touch .gitignore
+
+    -open up .gitignore
+    nano .gitignore
+
+    -add the following files and folder to .gitignore
+env1/       #env1 will be the name of the virtual environment
+*.pyc       #this makes git ignore Python's byte code files
+db.sqlite3  #this makes git ignore the sqlite database
+
+    -exit nano
+        Ctrl-X
+        Y
+        enter
+
+*step (3): Install Python virtual environment 13.0.3
+    #Python virtual environment is useful because it is a Python environment
+    #that will created specifically for the dependencies of this project
+
+    sudo pip install virtualenv==13.0.3
+
+*step (4): Create a Python virtual environment in root directory
+    -create a Python virtual environment named env1
+    virtualenv env1
+
+*step (5): Activate Python virtual environment in root directory
+    -activate virtualenv
+    source env1/bin/activate
+
+*step (6): Install Django 1.8.2
+    pip install django==1.8.2
+
+*step (7): Create requirements.txt file
+    #this will create a requirements.txt file, which contains a simple 
+    #list of all the packages in the current environment, and their respective versions.     
+    
+    pip freeze > requirements.txt
+
+*step (8): Add and commit changes to root directory with git
+    -stage all files in mother2 directory
+    #this stages all except the files being ignored according to the git ignore file
+    git add -A
+
+    -commit changes
+    git commit -m "the root directory and environment is set up"
+
+
+
+
+
+--------------------------------------------
+
+Part 2
+*step (0): Create a Django project called "yourproject"
+
+    -make a django project called yourproject
+        django-admin startproject yourproject
+
+*Do high level steps (3) through (8) from: instrutions-django-hello-world1
+
+
+
