@@ -36,10 +36,7 @@ Part 1
     git init
 
 *step (2) Edit git ignore
-    -make ignore file
-    touch .gitignore
-
-    -open up .gitignore
+    -create an ignore file and edit it's contents
     nano .gitignore
 
     -add the following files and folder to .gitignore
