@@ -6,16 +6,16 @@
 
 *high level instructions:
     (0) install pip
-    (0) install Django
-    (1) create root directory
-    (2) create a Django project 
-    (3) create a Django app for project
-    (4) create template folder and template for app
-    (5) create views for app
-    (6) set url mappings in project
-    (7) configure settings file
-    (8) start development server
-    (9) visit site in browser
+    (1) install Django
+    (2) create root directory
+    (3) create a Django project 
+    (4) create a Django app for project
+    (5) create template folder and template for app
+    (6) create views for app
+    (7) set url mappings in project
+    (8) configure settings file
+    (9) start development server
+    (10) visit site in browser
 
 ----------------------------------------------------------------
 *step (0): Install Pip
